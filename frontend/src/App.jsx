@@ -1,11 +1,25 @@
-import React from 'react'
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import HomePage from './components/HomePage';
+import MappingAndNavigation from './components/MappingAndNavigation';
+import FacilityMarkersAndInformation from './components/FacilityMarkersAndInformation';
+import TrainArrivalInformation from './components/TrainArrivalInformation';
+import RoutingAndDirection from './components/RoutingAndDirection';
+import UserInteraction from './components/UserInteraction';
 
 const App = () => {
   return (
-    <div className='bg-slate-600'>
-      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Unde, labore officiis voluptas exercitationem repellendus aut adipisci, ipsa non ipsum aliquam voluptatibus eius, ratione nulla repellat. Quibusdam aperiam doloribus odio ex!
-    </div>
-  )
-}
+    <Router>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/mapping-and-navigation" element={<MappingAndNavigation />} />
+        <Route path="/facility-markers-and-information" element={<FacilityMarkersAndInformation />} />
+        <Route path="/train-arrival-information" element={<TrainArrivalInformation />} />
+        <Route path="/routing-and-direction" element={<RoutingAndDirection />} />
+        <Route path="/user-interaction" element={<UserInteraction />} />
+      </Routes>
+    </Router>
+  );
+};
 
-export default App
+export default App;

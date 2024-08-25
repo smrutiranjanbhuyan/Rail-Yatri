@@ -1,7 +1,7 @@
 import { createBrowserRouter } from 'react-router-dom';
 import App from '../App';
 import { LandingPage, SignupPage, LoginPage, DashBoard, NotFoundPage } from '../pages';
-import { ErrorBoundary } from '../components';
+import { ErrorBoundary, MapComponent } from '../components';
 
 const routes = [
   {
@@ -40,7 +40,7 @@ const routes = [
         path: 'dashboard',
         element: (
           <ErrorBoundary>
-            <DashBoard />
+            <MapComponent/>
           </ErrorBoundary>
         ),
       },

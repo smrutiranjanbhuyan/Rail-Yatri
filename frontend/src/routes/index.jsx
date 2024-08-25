@@ -1,16 +1,59 @@
-import { createBrowserRouter } from "react-router-dom";
-import App from "../App";
-import { Header } from "../layouts";
-import {LandingPage} from '../pages'
-import { Children } from "react";
+import { createBrowserRouter } from 'react-router-dom';
+import App from '../App';
+import { LandingPage, SignupPage, LoginPage, DashBoard, NotFoundPage } from '../pages';
+import { ErrorBoundary } from '../components';
+
 const routes = [
   {
-    path: "/",
-    element: <App/>,
-    children:[{
-      path:"",
-      element:<LandingPage/>
-    }]
+    path: '/',
+    element: (
+      <ErrorBoundary>
+        <App />
+      </ErrorBoundary>
+    ),
+    children: [
+      {
+        path: '',
+        element: (
+          <ErrorBoundary>
+            <LandingPage />
+          </ErrorBoundary>
+        ),
+      },
+      {
+        path: 'signup',
+        element: (
+          <ErrorBoundary>
+            <SignupPage />
+          </ErrorBoundary>
+        ),
+      },
+      {
+        path: 'login',
+        element: (
+          <ErrorBoundary>
+            <LoginPage />
+          </ErrorBoundary>
+        ),
+      },
+      {
+        path: 'dashboard',
+        element: (
+          <ErrorBoundary>
+            <DashBoard />
+          </ErrorBoundary>
+        ),
+      },
+    
+      {
+        path: '*',
+        element: (
+          <ErrorBoundary>
+            <NotFoundPage />
+          </ErrorBoundary>
+        ),
+      },
+    ],
   },
 ];
 

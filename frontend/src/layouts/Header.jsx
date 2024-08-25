@@ -1,75 +1,149 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { toggleDarkMode } from '../store/slices/darkModeSlice'; 
-import { FaMoon, FaSun } from 'react-icons/fa'; 
-import { Link } from 'react-router-dom'; 
+import { toggleDarkMode } from '../store/slices/darkModeSlice';
+import { FaMoon, FaSun, FaBars, FaTimes } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 import { logo } from '../assets';
+import { navLinks } from '../constants';
 
 const Header = () => {
   const dispatch = useDispatch();
-  const darkMode = useSelector(state => state.darkMode.darkMode);
+  const darkMode = useSelector((state) => state.darkMode.darkMode);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const handleToggle = () => {
     dispatch(toggleDarkMode());
   };
 
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+  };
+
   return (
-    <div className={darkMode ? 'bg-gray-900' : 'bg-white'}>
-      <header
-        className={`fixed inset-x-0 top-0 z-30 mx-auto w-full max-w-screen-md border py-3 shadow backdrop-blur-lg md:top-2 md:rounded-3xl lg:max-w-screen-lg ${darkMode ? 'bg-gray-800 border-gray-700' : 'bg-white/80 border-gray-100'}`}
-      >
-        <div className="px-4">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center shrink-0">
-              <Link aria-current="page" className="flex items-center" to="/">
-                <img
-                  className="h-7 w-auto"
-                  src={logo}
-                  alt="logo"
-                />
-                <p className="ml-3 text-lg font-bold leading-6 ${darkMode ? 'text-gray-100' : 'text-gray-900'}">RailSathi</p>
-              </Link>
-            </div>
-            <div className="hidden md:flex md:items-center md:justify-center md:gap-5">
-              <Link
-                aria-current="page"
-                className={`inline-block rounded-lg px-2 py-1 text-sm font-medium ${darkMode ? 'text-gray-300 hover:bg-gray-700 hover:text-white' : 'text-gray-900 hover:bg-gray-100 hover:text-gray-900'} transition-all duration-200`}
-                to="#"
-              >
-                How it works
-              </Link>
-              <Link
-                className={`inline-block rounded-lg px-2 py-1 text-sm font-medium ${darkMode ? 'text-gray-300 hover:bg-gray-700 hover:text-white' : 'text-gray-900 hover:bg-gray-100 hover:text-gray-900'} transition-all duration-200`}
-                to="#"
-              >
-                Pricing
-              </Link>
-            </div>
-            <div className="flex items-center justify-end gap-3">
-              <Link
-                className={`hidden items-center justify-center rounded-xl px-3 py-2 text-sm font-semibold shadow-sm ring-1 ring-inset transition-all duration-150 ${darkMode ? 'bg-gray-700 text-gray-300 ring-gray-600 hover:bg-gray-600' : 'bg-white text-gray-900 ring-gray-300 hover:bg-gray-50'} sm:inline-flex`}
-                to="/login"
-              >
-                Sign in
-              </Link>
-              <Link
-                className={`inline-flex items-center justify-center rounded-xl px-3 py-2 text-sm font-semibold shadow-sm transition-all duration-150 ${darkMode ? 'bg-blue-700 text-white hover:bg-blue-600' : 'bg-blue-600 text-white hover:bg-blue-500'}`}
-                to="/login"
-              >
-                Login
-              </Link>
-              <button
-                className={`ml-3 p-2 rounded-full ${darkMode ? 'text-gray-300 bg-gray-700 hover:bg-gray-600' : 'text-gray-900 bg-gray-100 hover:bg-gray-200'}`}
-                onClick={handleToggle}
-                aria-label="Toggle Dark Mode"
-              >
-                {darkMode ? <FaMoon size={20} /> : <FaSun size={20} />}
-              </button>
-            </div>
-          </div>
+    <header
+      className={`fixed inset-x-0 top-0 z-30 mx-auto w-full max-w-screen-xl border-b py-3 shadow-lg backdrop-blur-md transition-colors duration-300 ${
+        darkMode ? 'bg-gray-900 border-gray-700' : 'bg-white border-gray-200'
+      }`}
+    >
+      <div className="flex items-center justify-between px-4 mx-auto max-w-screen-xl">
+        {/* Logo and Title */}
+        <div className="flex items-center">
+          <Link aria-current="page" className="flex items-center" to="/">
+            <img className="h-8 w-auto" src={logo} alt="Logo" />
+            <p className={`ml-3 text-xl font-bold ${darkMode ? 'text-gray-100' : 'text-gray-900'}`}>
+              RailSathi
+            </p>
+          </Link>
         </div>
-      </header>
-    </div>
+
+        {/* Hamburger Button */}
+        <button
+          className={`md:hidden p-2 rounded-full transition-colors duration-300 ${
+            darkMode ? 'text-gray-300 bg-gray-700 hover:bg-gray-600' : 'text-gray-900 bg-gray-100 hover:bg-gray-200'
+          }`}
+          onClick={toggleMenu}
+          aria-label="Toggle Navigation Menu"
+        >
+          {menuOpen ? <FaTimes size={20} /> : <FaBars size={20} />}
+        </button>
+
+        {/* Navigation Links for Desktop */}
+        <nav className="hidden md:flex items-center gap-5">
+          {navLinks.map((link) => (
+            <Link
+              key={link.name}
+              aria-current={link.href === window.location.pathname ? 'page' : undefined}
+              className={`inline-flex items-center rounded-lg px-3 py-2 text-sm font-medium transition-colors duration-200 ${
+                darkMode ? 'text-gray-300 hover:bg-gray-700' : 'text-gray-900 hover:bg-gray-100'
+              }`}
+              to={link.href}
+            >
+              {link.icon && <span className="mr-2">{link.icon}</span>}
+              {link.name}
+            </Link>
+          ))}
+        </nav>
+
+        {/* Action Buttons and Dark Mode Toggle */}
+        <div className="hidden md:flex items-center gap-4">
+          <Link
+            className={`inline-flex items-center rounded-lg px-4 py-2 text-sm font-semibold transition-colors duration-300 ${
+              darkMode ? 'bg-blue-700 text-white hover:bg-blue-600' : 'bg-blue-600 text-white hover:bg-blue-500'
+            }`}
+            to="/login"
+          >
+            Login
+          </Link>
+          <Link
+            className={`inline-flex items-center rounded-lg px-4 py-2 text-sm font-semibold transition-colors duration-300 ${
+              darkMode ? 'bg-green-700 text-white hover:bg-green-600' : 'bg-green-600 text-white hover:bg-green-500'
+            }`}
+            to="/signup"
+          >
+            Register
+          </Link>
+          <button
+            className={`p-2 rounded-full transition-colors duration-300 ${
+              darkMode ? 'text-gray-300 bg-gray-700 hover:bg-gray-600' : 'text-gray-900 bg-gray-100 hover:bg-gray-200'
+            }`}
+            onClick={handleToggle}
+            aria-label="Toggle Dark Mode"
+          >
+            {darkMode ? <FaMoon size={20} /> : <FaSun size={20} />}
+          </button>
+        </div>
+      </div>
+
+      {/* Navigation Links and Action Buttons for Mobile */}
+      {menuOpen && (
+        <nav className="md:hidden bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 absolute inset-x-0 top-full border-t border-gray-200 dark:border-gray-700">
+          <div className="flex flex-col p-4">
+            {navLinks.map((link) => (
+              <Link
+                key={link.name}
+                aria-current={link.href === window.location.pathname ? 'page' : undefined}
+                className={`flex items-center rounded-lg px-3 py-2 text-sm font-medium transition-colors duration-200 ${
+                  darkMode ? 'hover:bg-gray-700' : 'hover:bg-gray-200'
+                }`}
+                to={link.href}
+                onClick={() => setMenuOpen(false)}
+              >
+                {link.icon && <span className="mr-2">{link.icon}</span>}
+                {link.name}
+              </Link>
+            ))}
+            <Link
+              className={`mt-2 inline-flex items-center rounded-lg px-4 py-2 text-sm font-semibold transition-colors duration-300 ${
+                darkMode ? 'bg-blue-700 text-white hover:bg-blue-600' : 'bg-blue-600 text-white hover:bg-blue-500'
+              }`}
+              to="/login"
+              onClick={() => setMenuOpen(false)}
+            >
+              Login
+            </Link>
+            <Link
+              className={`mt-2 inline-flex items-center rounded-lg px-4 py-2 text-sm font-semibold transition-colors duration-300 ${
+                darkMode ? 'bg-green-700 text-white hover:bg-green-600' : 'bg-green-600 text-white hover:bg-green-500'
+              }`}
+              to="/signup"
+              onClick={() => setMenuOpen(false)}
+            >
+              Register
+            </Link>
+            <button
+              className={`mt-2 p-2 rounded-full transition-colors duration-300 ${
+                darkMode ? 'text-gray-300 bg-gray-700 hover:bg-gray-600' : 'text-gray-900 bg-gray-100 hover:bg-gray-200'
+              }`}
+              onClick={handleToggle}
+              aria-label="Toggle Dark Mode"
+            >
+              {darkMode ? <FaMoon size={20} /> : <FaSun size={20} />}
+            </button>
+           
+          </div>
+        </nav>
+      )}
+    </header>
   );
 };
 

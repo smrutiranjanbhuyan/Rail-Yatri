@@ -54,6 +54,15 @@ const routes = [
       },
     
       {
+        path: 'test',
+        element: (
+          <ErrorBoundary>
+            <RoutesPage/>
+          </ErrorBoundary>
+        ),
+      },
+    
+      {
         path: '*',
         element: (
           <ErrorBoundary>

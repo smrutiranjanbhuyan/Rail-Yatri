@@ -55,7 +55,9 @@ const MapComponent = () => {
             container: mapContainer.current,
             style: maptilersdk.MapStyle.STREETS,
             center: [85.801652038434, 20.254346910123633],
-            zoom: 14,
+            zoom: 18,
+            pitch: 90, 
+            bearing: -30,
         });
 
  

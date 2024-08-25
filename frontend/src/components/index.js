@@ -5,4 +5,5 @@ export {default as ProgressLoader} from './ProgressLoader'
 export {default as  MapComponent} from './MapComponent'
 export {default as  MarkerContent} from './MarkerContent'
 export {default as MarkerDetails} from './MarkerDetails'
+export {default as RoutesNavbar} from './RoutesNavbar'
 

@@ -1,16 +1,18 @@
-import React, { useState } from 'react'
-import {MapComponent,SideBar} from '../components'
-const RoutesPage = () => {
-  const [sidebarOpen, setSidebarOpen] = useState(false);
-  const toggleSidebar = () => {
-    setSidebarOpen(!sidebarOpen);
-  };
-  return (
-  <div className='flex'>
-  <MapComponent/>
-  <SideBar></SideBar>
-  </div>
-  )
-}
+import React from "react";
+import { MapComponent, RoutesNavbar, SideBar } from "../components";
 
-export default RoutesPage
+const RoutesPage = () => {
+  return (
+    <div className="flex flex-col h-screen mt-14">
+      <RoutesNavbar />
+      <div className="flex flex-grow">
+    
+        <div className="flex-grow">
+          <MapComponent />
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default RoutesPage;

@@ -1,10 +1,14 @@
 import React from 'react'
-
+import {Header,Footer} from './layouts'
+import {Outlet} from 'react-router-dom'
+import {background} from './assets'
 const App = () => {
   return (
-    <div className='bg-slate-600'>
-      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Unde, labore officiis voluptas exercitationem repellendus aut adipisci, ipsa non ipsum aliquam voluptatibus eius, ratione nulla repellat. Quibusdam aperiam doloribus odio ex!
-    </div>
+    <div className="flex flex-col min-h-screen bg-cover bg-center bg-fixed" style={{ backgroundImage: `url(${background})` }}>
+    <Header />
+    <Outlet/>
+    <Footer />
+  </div>
   )
 }
 

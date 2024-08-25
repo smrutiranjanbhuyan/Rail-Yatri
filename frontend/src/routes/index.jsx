@@ -1,6 +1,6 @@
 import { createBrowserRouter } from 'react-router-dom';
 import App from '../App';
-import { LandingPage, SignupPage, LoginPage, DashBoard, NotFoundPage } from '../pages';
+import { LandingPage, SignupPage, LoginPage, DashBoard, NotFoundPage, RoutesPage } from '../pages';
 import { ErrorBoundary, MapComponent } from '../components';
 
 const routes = [
@@ -40,7 +40,15 @@ const routes = [
         path: 'dashboard',
         element: (
           <ErrorBoundary>
-            <MapComponent/>
+            <DashBoard/>
+          </ErrorBoundary>
+        ),
+      },
+      {
+        path: 'routes',
+        element: (
+          <ErrorBoundary>
+            <RoutesPage/>
           </ErrorBoundary>
         ),
       },

@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import SideBar from '../components/SideBar';
 import { FaBars } from 'react-icons/fa';
 import { useSelector } from 'react-redux';
-
 const DashBoard = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const darkMode = useSelector((state) => state.darkMode.darkMode); 

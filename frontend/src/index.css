@@ -25,13 +25,3 @@
     animation: typewriter 4s steps(40, end) infinite, ease-in-out 0.75s step-start infinite;
   }
   
-
-.dark .mapboxgl-map {
-  background-color: #1a1a1a; 
-}
-
-.dark .popup-content {
-  background-color: #333; 
-  color: #fff; 
-}
-

@@ -1,11 +1,19 @@
-import { createBrowserRouter } from 'react-router-dom';
-import App from '../App';
-import { LandingPage, SignupPage, LoginPage, DashBoard, NotFoundPage, RoutesPage } from '../pages';
-import { ErrorBoundary, MapComponent } from '../components';
+import { createBrowserRouter } from "react-router-dom";
+import App from "../App";
+import {
+  LandingPage,
+  SignupPage,
+  LoginPage,
+  DashBoard,
+  NotFoundPage,
+  RoutesPage,
+  SearchTrain,
+} from "../pages";
+import { ErrorBoundary, MapComponent, ThreeDview } from "../components";
 
 const routes = [
   {
-    path: '/',
+    path: "/",
     element: (
       <ErrorBoundary>
         <App />
@@ -13,7 +21,7 @@ const routes = [
     ),
     children: [
       {
-        path: '',
+        path: "",
         element: (
           <ErrorBoundary>
             <LandingPage />
@@ -21,7 +29,7 @@ const routes = [
         ),
       },
       {
-        path: 'signup',
+        path: "signup",
         element: (
           <ErrorBoundary>
             <SignupPage />
@@ -29,7 +37,7 @@ const routes = [
         ),
       },
       {
-        path: 'login',
+        path: "login",
         element: (
           <ErrorBoundary>
             <LoginPage />
@@ -37,33 +45,70 @@ const routes = [
         ),
       },
       {
-        path: 'dashboard',
+        path: "dashboard",
         element: (
           <ErrorBoundary>
-            <DashBoard/>
+            <DashBoard />
+          </ErrorBoundary>
+        ),
+        children: [
+          {
+            path: "",
+            element: (
+              <ErrorBoundary>
+                <DashBoard />
+              </ErrorBoundary>
+            ),
+          },
+          {
+            path: "search-train",
+            element: (
+              <ErrorBoundary>
+                <SearchTrain />
+              </ErrorBoundary>
+            ),
+          }
+        ],
+      },
+      {
+        path: "routes",
+        element: (
+          <ErrorBoundary>
+            <RoutesPage />
+          </ErrorBoundary>
+        ),
+        children: [
+          {
+            path: "",
+            element: (
+              <ErrorBoundary>
+                <MapComponent />
+              </ErrorBoundary>
+            ),
+          },
+
+          {
+            path: "3d",
+            element: (
+              <ErrorBoundary>
+                <ThreeDview />
+              </ErrorBoundary>
+            ),
+          },
+        ],
+      },
+
+      {
+        path: "test",
+        element: (
+          <ErrorBoundary>
+            <ThreeDview />
           </ErrorBoundary>
         ),
       },
+
       {
-        path: 'routes',
-        element: (
-          <ErrorBoundary>
-            <RoutesPage/>
-          </ErrorBoundary>
-        ),
-      },
-    
-      {
-        path: 'test',
-        element: (
-          <ErrorBoundary>
-            <RoutesPage/>
-          </ErrorBoundary>
-        ),
-      },
-    
-      {
-        path: '*',
+        path: "*",
         element: (
           <ErrorBoundary>
             <NotFoundPage />

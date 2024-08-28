@@ -31,61 +31,61 @@ const navLinks = [
 
 // Sidebar navigation links
 const sideNavLinks = [
-  {
-    name: 'Search Station',
-    href: '/search-station',
-    icon: <FaMapMarkerAlt />,
-  },
+  // {
+  //   name: 'Search Station',
+  //   href: '/search-station',
+  //   icon: <FaMapMarkerAlt />,
+  // },
   {
     name: 'Search Train',
-    href: '/search-train',
+    href: 'search-train',
     icon: <FaTrain />,
   },
-  {
-    name: 'Trains Between Stations',
-    href: '/trains-between-stations',
-    icon: <FaMapMarkerAlt />,
-  },
-  {
-    name: 'Get Train Live Status',
-    href: '/train-live-status',
-    icon: <FaClock />,
-  },
-  {
-    name: 'Get Train Schedule',
-    href: '/train-schedule',
-    icon: <FaCalendar />,
-  },
-  {
-    name: 'Get PNR Status',
-    href: '/pnr-status',
-    icon: <FaTicketAlt />,
-  },
-  {
-    name: 'Check Seat Availability',
-    href: '/check-seat-availability',
-    icon: <FaSearch />,
-  },
-  {
-    name: 'Get Train Classes',
-    href: '/train-classes',
-    icon: <FaBus />,
-  },
-  {
-    name: 'Get Fare',
-    href: '/fare',
-    icon: <FaInfoCircle />,
-  },
-  {
-    name: 'Get Trains By Station',
-    href: '/trains-by-station',
-    icon: <FaMapMarkerAlt />,
-  },
-  {
-    name: 'Get Live Station',
-    href: '/live-station',
-    icon: <FaTrain />,
-  },
+  // {
+  //   name: 'Trains Between Stations',
+  //   href: '/trains-between-stations',
+  //   icon: <FaMapMarkerAlt />,
+  // },
+  // {
+  //   name: 'Get Train Live Status',
+  //   href: '/train-live-status',
+  //   icon: <FaClock />,
+  // },
+  // {
+  //   name: 'Get Train Schedule',
+  //   href: '/train-schedule',
+  //   icon: <FaCalendar />,
+  // },
+  // {
+  //   name: 'Get PNR Status',
+  //   href: '/pnr-status',
+  //   icon: <FaTicketAlt />,
+  // },
+  // {
+  //   name: 'Check Seat Availability',
+  //   href: '/check-seat-availability',
+  //   icon: <FaSearch />,
+  // },
+  // {
+  //   name: 'Get Train Classes',
+  //   href: '/train-classes',
+  //   icon: <FaBus />,
+  // },
+  // {
+  //   name: 'Get Fare',
+  //   href: '/fare',
+  //   icon: <FaInfoCircle />,
+  // },
+  // {
+  //   name: 'Get Trains By Station',
+  //   href: '/trains-by-station',
+  //   icon: <FaMapMarkerAlt />,
+  // },
+  // {
+  //   name: 'Get Live Station',
+  //   href: '/live-station',
+  //   icon: <FaTrain />,
+  // },
 ];
 
 export { navLinks, sideNavLinks };

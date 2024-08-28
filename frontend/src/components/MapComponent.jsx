@@ -56,18 +56,12 @@ const MapComponent = () => {
             style: maptilersdk.MapStyle.STREETS,
             center: [85.801652038434, 20.254346910123633],
             zoom: 18,
-            pitch: 90, 
+            pitch: 60, 
             bearing: -30,
         });
 
  
-        if (darkMode) {
-            mapContainer.current.classList.add('dark');
-            map.current.setStyle(maptilersdk.MapStyle.DARK);
-        } else {
-            mapContainer.current.classList.remove('dark');
-            map.current.setStyle(maptilersdk.MapStyle.STREETS);
-        }
+       
 
         map.current.on('styleimagemissing', (e) => {
             console.warn(`Missing image: ${e.id}`);

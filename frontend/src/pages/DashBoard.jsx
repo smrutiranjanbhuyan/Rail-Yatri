@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import SideBar from '../components/SideBar';
 import { FaBars } from 'react-icons/fa';
 import { useSelector } from 'react-redux';
+import { Outlet } from 'react-router-dom';
 const DashBoard = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const darkMode = useSelector((state) => state.darkMode.darkMode); 
@@ -30,13 +31,12 @@ const DashBoard = () => {
 
       {/* Main Content */}
       <main
-        className={`transition-all duration-300 ${
+        className={`transition-all duration-300 mt-14 ${
           sidebarOpen ? 'ml-64' : 'ml-0'
         } p-4`}
       >
-        <h1 className="text-2xl font-bold">Dashboard</h1>
-        {/* Your main dashboard content goes here */}
-        
+        {/*  main dashboard content goes here */}
+        <Outlet/>
       </main>
     </div>
   );

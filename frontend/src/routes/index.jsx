@@ -8,6 +8,7 @@ import {
   NotFoundPage,
   RoutesPage,
   SearchTrain,
+  About,
 } from "../pages";
 import { ErrorBoundary, MapComponent, ThreeDview } from "../components";
 
@@ -69,6 +70,14 @@ const routes = [
             ),
           }
         ],
+      },
+      {
+        path: "about",
+        element: (
+          <ErrorBoundary>
+            <About />
+          </ErrorBoundary>
+        )
       },
       {
         path: "routes",

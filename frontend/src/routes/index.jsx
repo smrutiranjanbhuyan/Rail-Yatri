@@ -56,7 +56,7 @@ const routes = [
             path: "",
             element: (
               <ErrorBoundary>
-                <DashBoard />
+            <SearchTrain />
               </ErrorBoundary>
             ),
           },

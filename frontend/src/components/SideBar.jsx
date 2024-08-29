@@ -1,6 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { toggleDarkMode } from '../store/slices/darkModeSlice';
+import { logout } from '../store/slices/authSlice';
 import { FaMoon, FaSun, FaTimes } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { sideNavLinks } from '../constants';
@@ -8,7 +9,10 @@ import { sideNavLinks } from '../constants';
 const SideBar = ({ isOpen, onClose }) => {
   const dispatch = useDispatch();
   const darkMode = useSelector((state) => state.darkMode.darkMode);
-
+  const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
+  const handleLogout = () => {
+    dispatch(logout());
+  };
   const handleToggle = () => {
     dispatch(toggleDarkMode());
   };
@@ -60,14 +64,26 @@ const SideBar = ({ isOpen, onClose }) => {
           >
             {darkMode ? <FaMoon size={20} /> : <FaSun size={20} />}
           </button>
-          <Link
+        
+        {
+          isLoggedIn?(  <Link
             className={`inline-flex items-center rounded-lg px-4 py-2 text-sm font-semibold transition-colors duration-300 ${
-              darkMode ? 'bg-blue-700 text-white hover:bg-blue-600' : 'bg-blue-600 text-white hover:bg-blue-500'
+              darkMode ? 'bg-red-700 text-white hover:bg-blue-600' : 'bg-red-600 text-white hover:bg-red-500'
             }`}
-            to="/login"
+           onClick={handleLogout}
           >
-            Login
-          </Link>
+            Logout
+          </Link>):(
+              <Link
+              className={`inline-flex items-center rounded-lg px-4 py-2 text-sm font-semibold transition-colors duration-300 ${
+                darkMode ? 'bg-blue-700 text-white hover:bg-blue-600' : 'bg-blue-600 text-white hover:bg-blue-500'
+              }`}
+              to="/login"
+            >
+              Login
+            </Link>
+          )
+        }
           <Link
             className={`inline-flex items-center rounded-lg px-4 py-2 text-sm font-semibold transition-colors duration-300 ${
               darkMode ? 'bg-green-700 text-white hover:bg-green-600' : 'bg-green-600 text-white hover:bg-green-500'

@@ -1,11 +1,20 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import SideBar from '../components/SideBar';
 import { FaBars } from 'react-icons/fa';
 import { useSelector } from 'react-redux';
 import { Outlet } from 'react-router-dom';
+import {useNavigate} from 'react-router-dom'
 const DashBoard = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const darkMode = useSelector((state) => state.darkMode.darkMode); 
+  const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
+  const navigate=useNavigate()
+  useEffect(() => {
+    if (!isLoggedIn) {
+      navigate('/login');
+    }
+  }, [isLoggedIn, navigate]);
+
   const toggleSidebar = () => {
     setSidebarOpen(!sidebarOpen);
   };

@@ -5,7 +5,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
 import { startLoading, stopLoading } from '../store/slices/loaderSlice';
 import { login } from '../store/slices/authSlice';
-import {useNavigate} from 'react-router-dom'
+import {useNavigate, Link} from 'react-router-dom'
+
 
 const SignInSchema = Yup.object().shape({
   email: Yup.string().email('Invalid email').required('Email is required'),
@@ -139,9 +140,7 @@ const SignInPage = () => {
           <span className="text-sm">
             Don't have an account?{' '}
           </span>
-          <a href="#" className="text-blue-600 hover:text-blue-700 font-medium">
-            Sign Up
-          </a>
+          <Link to={'/signup'} className="text-blue-600 hover:text-blue-700 font-medium">Sign Up</Link>
         </div>
       </div>
     </div>

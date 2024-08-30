@@ -27,46 +27,54 @@ import {
   FaWarehouse,
   FaChild,
 } from "react-icons/fa";
+import { CiLocationOn } from "react-icons/ci";
 
 const iconMapping = {
-  "tea-stall": <FaCoffee className="text-green-500 text-xl" />,
-  bookstore: <FaBook className="text-blue-500 text-xl" />,
-  shop: <FaAddressCard className="text-red-500 text-xl" />,
-  restaurant: <FaUtensils className="text-orange-500 text-xl" />,
-  hotel: <FaBed className="text-purple-500 text-xl" />,
-  "car-rental": <FaCar className="text-yellow-500 text-xl" />,
-  repair: <FaWrench className="text-gray-500 text-xl" />,
-  "shopping-mall": <FaShoppingCart className="text-teal-500 text-xl" />,
-  hospital: <FaHospital className="text-red-600 text-xl" />,
-  bank: <FaLandmark className="text-blue-800 text-xl" />,
-  "bicycle-rental": <FaBicycle className="text-green-700 text-xl" />,
-  atm: <FaDollarSign className="text-green-600 text-xl" />,
-  "music-venue": <FaMusic className="text-purple-600 text-xl" />,
-  park: <FaTree className="text-green-800 text-xl" />,
-  award: <FaTrophy className="text-yellow-600 text-xl" />,
-  "music-shop": <FaGuitar className="text-brown-600 text-xl" />,
-  theater: <FaTheaterMasks className="text-red-700 text-xl" />,
-  "train-station": <FaTrain className="text-blue-600 text-xl" />,
-  "gas-station": <FaGasPump className="text-gray-700 text-xl" />,
-  "bus-stop": <FaBus className="text-yellow-600 text-xl" />,
-  "taxi-stand": <FaTaxi className="text-orange-500 text-xl" />,
-  university: <FaUniversity className="text-blue-700 text-xl" />,
-  school: <FaSchool className="text-green-600 text-xl" />,
-  office: <FaBuilding className="text-gray-600 text-xl" />,
-  landmark: <FaLandmark className="text-brown-600 text-xl" />,
-  "fire-station": <FaFireExtinguisher className="text-red-500 text-xl" />,
-  warehouse: <FaWarehouse className="text-orange-600 text-xl" />,
-  clinic: <FaMusic className="text-green-500 text-xl" />,
-  playground: <FaChild className="text-yellow-700 text-xl" />,
+  "tea-stall": <FaCoffee className="text-green-500 text-sm" />,
+  bookstore: <FaBook className="text-blue-500 text-sm" />,
+  shop: <FaAddressCard className="text-red-500 text-sm" />,
+  restaurant: <FaUtensils className="text-orange-500 text-sm" />,
+  hotel: <FaBed className="text-purple-500 text-sm" />,
+  "car-rental": <FaCar className="text-yellow-500 text-sm" />,
+  repair: <FaWrench className="text-gray-500 text-sm" />,
+  "shopping-mall": <FaShoppingCart className="text-teal-500 text-sm" />,
+  hospital: <FaHospital className="text-red-600 text-sm" />,
+  bank: <FaLandmark className="text-blue-800 text-sm" />,
+  "bicycle-rental": <FaBicycle className="text-green-700 text-sm" />,
+  atm: <FaDollarSign className="text-green-600 text-sm" />,
+  "music-venue": <FaMusic className="text-purple-600 text-sm" />,
+  park: <FaTree className="text-green-800 text-sm" />,
+  award: <FaTrophy className="text-yellow-600 text-sm" />,
+  "music-shop": <FaGuitar className="text-brown-600 text-sm" />,
+  theater: <FaTheaterMasks className="text-red-700 text-sm" />,
+  "train-station": <FaTrain className="text-blue-600 text-sm" />,
+  "gas-station": <FaGasPump className="text-gray-700 text-sm" />,
+  "bus-stop": <FaBus className="text-yellow-600 text-sm" />,
+  "taxi-stand": <FaTaxi className="text-orange-500 text-sm" />,
+  university: <FaUniversity className="text-blue-700 text-sm" />,
+  school: <FaSchool className="text-green-600 text-sm" />,
+  office: <FaBuilding className="text-gray-600 text-sm" />,
+  landmark: <FaLandmark className="text-brown-600 text-sm" />,
+  "fire-station": <FaFireExtinguisher className="text-red-500 text-sm" />,
+  warehouse: <FaWarehouse className="text-orange-600 text-sm" />,
+  clinic: <FaHospital className="text-green-500 text-sm" />,
+  playground: <FaChild className="text-yellow-700 text-sm" />,
 };
 
 const MarkerContent = ({ title, type }) => {
   const icon = iconMapping[type] || (
-    <FaAddressCard className="text-gray-500 text-xl" />
+    <CiLocationOn className="text-red-500 text-sm" />
   );
 
   return (
-    <span className="ml-3 text-lg font-medium text-gray-800"> {icon}</span>
+    <div className="flex items-center space-x-2">
+      {icon}
+      {title && (
+        <span className="text-base sm:text-sm md:text-sm lg:text-2sm font-medium text-blue-800">
+          {title}
+        </span>
+      )}
+    </div>
   );
 };
 
